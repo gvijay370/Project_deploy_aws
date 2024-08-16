@@ -47,7 +47,7 @@ jobs:
         run: |
           docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:main
           docker tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:main ${{ secrets.AWS_ACC_NO }}.dkr.ecr.${{ vars.AWS_REGION }}.amazonaws.com/${{ github.event.repository.name }}
-          docker push ${{ secrets.AWS_ACC_NO }}.dkr.ecr.${{ vars.AWS_REGION }}.amazonaws.com/${{ github.event.repository.name }}
+          docker push ${{ secrets.AWS_ACC_NO }}.dkr.ecr.${{ vars.AWS_REGION }}.amazonaws.com/${{ github.event.repository.name }}:latest
 
       - name: Deploy production with aws CLI
         if: ${{ inputs.environment }} == 'Production'
